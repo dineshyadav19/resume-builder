@@ -15,84 +15,111 @@ const colors = {
   black: '#000',
 };
 
+const happifulRevamp = [
+  'Contributed to the development of Happiful, a widely recognized mental health magazine in the UK that has won awards for its high-quality content.',
+  'Developed responsive web designs that improved user engagement and increased website traffic.',
+  'Integrated front-end designs with back-end APIs to create exceptional user experiences, including implementing Algolia search functionality.',
+  'Utilized Typescript, Nextjs, Ghost CMS, Contentful, Tailwind CSS, and Algolia for Search to achieve project objectives and maintain code quality.',
+];
+
+const skills = [
+  'SPA & Architecture',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'NextJs',
+  'Sass',
+  'Redux',
+  'TailwindCss',
+  'Nodejs',
+  'React Native',
+  'Product Shaping',
+];
+
+const SocialLink = ({
+  imageSrc,
+  path,
+  text,
+}: {
+  imageSrc: string;
+  path: string;
+  text: string;
+}) => {
+  return (
+    <li style={styles.socialLink}>
+      <Image src={imageSrc} style={styles.socialLinkImage} />
+      <Link src={path} style={styles.socialLinkText}>
+        {text}
+      </Link>
+    </li>
+  );
+};
+
+const MainSubSection = ({
+  sectionHeading,
+  title,
+  time,
+  workedAt,
+  achievements,
+}: {
+  sectionHeading?: string;
+  title: string;
+  time: string;
+  workedAt: string;
+  achievements: Array<string>;
+}) => {
+  return (
+    <>
+      {sectionHeading && (
+        <Text style={styles.subSectionTitle}>{sectionHeading}</Text>
+      )}
+      <Text style={styles.position}>{title}</Text>
+      <View style={styles.workedAt}>
+        <Text style={{ fontSize: 14, fontWeight: 'medium', marginBottom: 3 }}>
+          {workedAt}
+        </Text>
+        <Text style={{ fontSize: 10, color: colors.green }}>{time}</Text>
+      </View>
+      <Text style={styles.achievements}>Achievements</Text>
+      <View style={{ marginRight: 10, marginBottom: 10 }}>
+        {achievements.map((val, index) => (
+          <View style={styles.achievementsWrapper} key={index}>
+            <Text style={styles.dot}>&bull;</Text>
+            <Text>{val}</Text>
+          </View>
+        ))}
+      </View>
+    </>
+  );
+};
+
+const SideProjects = ({
+  projectTitle,
+  projectLink,
+  achievements,
+}: {
+  projectTitle: string;
+  projectLink: string;
+  achievements: Array<string>;
+}) => {
+  return (
+    <>
+      <Link src={projectLink} style={styles.projectLink}>
+        {projectTitle}
+      </Link>
+      <View style={{ marginRight: 10, marginBottom: 10 }}>
+        {achievements.map((val, index) => (
+          <View style={styles.achievementsWrapper} key={index}>
+            <Text style={styles.dot}>&bull;</Text>
+            <Text>{val}</Text>
+          </View>
+        ))}
+      </View>
+    </>
+  );
+};
+
 const Resume = () => {
-  const SocialLink = ({
-    imageSrc,
-    path,
-    text,
-  }: {
-    imageSrc: string;
-    path: string;
-    text: string;
-  }) => {
-    return (
-      <li style={styles.socialLink}>
-        <Image src={imageSrc} style={styles.socialLinkImage} />
-        <Link src={path} style={styles.socialLinkText}>
-          {text}
-        </Link>
-      </li>
-    );
-  };
-
-  const MainSubSection = ({
-    sectionHeading,
-    title,
-    time,
-    workedAt,
-    achievements,
-  }: {
-    sectionHeading?: string;
-    title: string;
-    time: string;
-    workedAt: string;
-    achievements: Array<string>;
-  }) => {
-    return (
-      <>
-        {sectionHeading && (
-          <Text style={styles.subSectionTitle}>{sectionHeading}</Text>
-        )}
-        <Text
-          style={{ fontSize: 18, fontWeight: 'extrabold', marginBottom: 5 }}
-        >
-          {title}
-        </Text>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Text style={{ fontSize: 16, fontWeight: 'medium', marginBottom: 5 }}>
-            {workedAt}
-          </Text>
-          <Text style={{ fontSize: 12, color: colors.green, marginBottom: 10 }}>
-            {time}
-          </Text>
-        </View>
-        <Text
-          style={{
-            fontSize: 12,
-            color: colors.green,
-            textDecoration: 'underline',
-            marginBottom: 5,
-          }}
-        >
-          Achievements
-        </Text>
-        <View style={{ marginLeft: 10, marginBottom: 10 }}>
-          {achievements.map((val, index) => (
-            <Text style={{ fontSize: 12, marginBottom: 5 }} key={index}>
-              {val}
-            </Text>
-          ))}
-        </View>
-      </>
-    );
-  };
-
   return (
     <Page size={[650, 'auto']} style={styles.container}>
       {/* Header */}
@@ -155,32 +182,25 @@ const Resume = () => {
         {/* First column */}
         <View style={styles.mainLeft}>
           <MainSubSection
-            sectionHeading="Education"
-            title="B.tech in Electronics and Communication"
-            time="Aug,2017 - July,2021"
-            workedAt="The NorthCap University"
-            achievements={['CGPA - 7.5/10.00']}
-          />
-          <MainSubSection
             sectionHeading="Professional Experience"
             title="Software Engineer"
-            time="April, 2022 - Present"
+            time="Apr,2022 - Present"
             workedAt="Fenice Energy (Earlier SunEdison)"
             achievements={[
-              "Architected and implemented the entire user interface of the Web-based product, helping the team to manage operations with ease and boosting the team's performance signiﬁcantly.",
+              "Architected and implemented the entire user interface of the Web-based product, helping the team to manage operations with ease and boosting the team's performance significantly.",
               'Coded robust, modular, scalable, and maintainable code base on Reactjs, AntDesign, and Typescript from scratch.',
-              'Spearheaded and put processes in place for smoother development ﬂow right from prototyping to the ﬁnal delivery of the product.',
+              'Spearheaded and put processes in place for smoother development flow right from prototyping to the final delivery of the product.',
               'The system is used by a team of 30+ and handles over 500+ tickets per day.',
             ]}
           />
           <MainSubSection
             title="Front-end Engineer"
-            time="Nov,2021 - March,2022"
+            time="Nov,2021 - Mar,2022"
             workedAt="Reqip"
             achievements={[
               'Collaborated closely with cross-functional teams and provided critical input on software architecture and design, contributing to the success of the software development team in delivering high-quality products.',
-              "Architected and implemented the entire user interface of the Web-based product, helping the team to manage operations with ease and boosting the team's performance signiﬁcantly.",
-              "Implemented several new features, including automating payments and generating and previewing reports using React PDF on the client-side, which signiﬁcantly improved the internal team's eﬃciency",
+              "Architected and implemented the entire user interface of the Web-based product, helping the team to manage operations with ease and boosting the team's performance significantly.",
+              "Implemented several new features, including automating payments and generating and previewing reports using React PDF on the client-side, which signiﬁcantly improved the internal team's efficiency",
             ]}
           />
           <MainSubSection
@@ -194,13 +214,78 @@ const Resume = () => {
           />
         </View>
         {/* Second column */}
-        <View style={{ width: '40%', paddingLeft: 10 }}></View>
+        <View style={{ width: '40%', paddingLeft: 10 }}>
+          <Text style={styles.subSectionTitle}>Skills</Text>
+          <View style={styles.skills}>
+            {skills.map((val, index) => (
+              <Text style={{ fontSize: 12 }} key={index}>
+                &bull; {val}
+              </Text>
+            ))}
+          </View>
+
+          <Text style={styles.subSectionTitle}>Side Projects</Text>
+          <SideProjects
+            projectTitle="Happiful Revamp"
+            projectLink="https://happiful.com"
+            achievements={happifulRevamp}
+          />
+          <MainSubSection
+            sectionHeading="Education"
+            title="B.tech in Electronics and Communication"
+            time="Aug,17-Jul,21"
+            workedAt="The NorthCap University"
+            achievements={['CGPA - 7.5/10.00']}
+          />
+        </View>
       </View>
     </Page>
   );
 };
 
 const styles = StyleSheet.create({
+  projectLink: {
+    color: colors.green,
+    fontSize: 14,
+    marginBottom: 6,
+  },
+  skills: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 12,
+  },
+  achievements: {
+    fontSize: 12,
+    color: colors.green,
+    textDecoration: 'underline',
+    marginBottom: 5,
+  },
+  achievementsWrapper: {
+    fontSize: 10,
+    marginBottom: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    fontFamily: 'Helvetica',
+  },
+  dot: {
+    display: 'flex',
+    fontSize: 14,
+    marginRight: 5,
+    color: colors.green,
+    transform: 'scale(1.25)',
+  },
+  position: {
+    fontSize: 16,
+    fontWeight: 'extrabold',
+  },
+  workedAt: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   header: {
     flex: 0.8,
     display: 'flex',
@@ -219,7 +304,8 @@ const styles = StyleSheet.create({
   },
   objective: {
     marginBottom: 2,
-    fontWeight: 'normal',
+    fontWeight: 'thin',
+    fontFamily: 'Helvetica',
     fontSize: 13,
   },
   equalCol: {
@@ -263,6 +349,7 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     color: colors.white,
+    fontFamily: 'Helvetica-Bold',
   },
   headerContainer: {
     display: 'flex',
